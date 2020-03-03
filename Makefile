@@ -37,6 +37,17 @@ ENABLE_ASSERTIONS		:= ${DEBUG}
 ENABLE_PMF			:= ${ENABLE_RUNTIME_INSTRUMENTATION}
 PLAT				:= ${DEFAULT_PLAT}
 
+# a70x0_mochabin board build option for DDR topology
+ifeq ($(PLAT),$(filter $(PLAT),a70x0_mochabin))
+
+DDR_TOPOLOGY		?= 0
+
+ifeq (${DDR_TOPOLOGY},0)
+    TF_CFLAGS	+= -D_DDR4_1CS_4G
+else ifeq (${DDR_TOPOLOGY},1)
+    TF_CFLAGS	+= -D_DDR4_2CS_8G
+endif
+endif
 ################################################################################
 # Checkpatch script options
 ################################################################################
