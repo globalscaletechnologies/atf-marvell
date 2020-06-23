@@ -46,6 +46,8 @@ ifeq (${DDR_TOPOLOGY},0)
     TF_CFLAGS	+= -D_DDR4_1CS_4G
 else ifeq (${DDR_TOPOLOGY},1)
     TF_CFLAGS	+= -D_DDR4_2CS_8G
+else ifeq (${DDR_TOPOLOGY},2)
+    TF_CFLAGS	+= -D_DDR4_1CS_2G
 endif
 endif
 ################################################################################
